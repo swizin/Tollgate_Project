@@ -1,0 +1,130 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.dashboard nav {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+.dashboard nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard nav ul li {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: white;
+}
+
+.dashboard nav ul li:hover {
+    background-color: #575757;
+    transition: background-color 0.3s;
+}
+
+#content {
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.background-image {
+    height: 200px;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+    transition: background-color 0.3s;
+}
+/* Style for the camera container */
+#camera-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Square box for camera feed */
+#camera-box {
+    width: 300px;   /* Set the width of the box */
+    height: 300px;  /* Set the height of the box to make it square */
+    border: 2px solid #333; /* Optional: add a border around the box */
+    background-color: #f4f4f4; /* Optional: light background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scanned-result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#stopfridtag-scan {
+    margin-top: 20px;
+}
+/* Style for the Scan RFID Tag button */
+#stopscan-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Green background for the button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#scan-button:hover {
+    background-color: #45a049; /* Darker green when hovering */
+}
+
+/* Optional: Style for the Stop Scanning button */
+#stop-scan {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f44336; /* Red background for the Stop button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#stop-scan:hover {
+    background-color: #e53935; /* Darker red when hovering */
+}

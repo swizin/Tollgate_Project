@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toll Employee Dashboard</title>
+    <link rel="stylesheet" href="tollhome.css">
+    <script src="https://unpkg.com/quagga/dist/quagga.min.js"></script>
+
+</head> \
+<body>
+    <div class="dashboard">
+        <!-- Navigation Bar -->
+        <nav>
+            <ul>
+                <li data-section="home">Home</li>
+                <li data-section="scanRFID">Scan RFID Tag</li>
+                <li data-section="openedGates">View Open Gates</li>
+                <li data-section="paymentHistory">View Toll Payment History</li>
+                <li data-section="manageAccount">Manage Account</li>
+                <li data-section="logout">Logout</li>
+            </ul>
+        </nav>
+
+        <!-- Content Area -->
+        <div id="content">
+            <!-- Home Section -->
+            <div id="home">
+                <h2>Welcome to the Toll Employee Dashboard</h2>
+                <p>Your role is to ensure seamless tollgate operations, including verifying payments, managing vehicle access, and maintaining records.</p>
+                <div class="background-image"></div>
+            </div>
+
+            <!-- Scan RFID Tag Section -->
+            <div id="scanRFID" class="hidden">
+                <h2>Scan RFID Tag</h2>
+                <p>Use this section to verify payments and open gates. Ensure the RFID tag payment is valid before allowing access.</p>
+                <button onclick="openGate()">Open Gate</button>
+                <h3>Payment History for Scanned Tag:</h3>
+                <ul id="paymentHistoryList">
+                    <li>No payment history available.</li>
+                </ul>
+            
+                <!-- Square box for camera feed (future barcode scanner display area) -->
+                <div id="camera-container">
+                    <div id="camera-box"></div> <!-- The square box -->
+                </div>
+            
+                <p id="scanned-result">No barcode scanned yet.</p>
+                <button id="stop-scan" style="display: none;">Stop Scanning</button>
+            </div>
+            
+            
+            
+            <!-- View Open Gates Section -->
+            <div id="openedGates" class="hidden">
+                <h2>View Open Gates</h2>
+                <p>Here is the list of previously opened gates:</p>
+                <table border="1">
+                    <tr>
+                        <th>Vehicle Owner</th>
+                        <th>Car Description</th>
+                        <th>Gate Opened Date</th>
+                    </tr>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>SUV - Blue</td>
+                        <td>2024-11-16</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- View Toll Payment History Section -->
+            <div id="paymentHistory" class="hidden">
+                <h2>View Toll Payment History</h2>
+                <p>List of all toll payments processed by this employee:</p>
+                <ul>
+                    <li>Payment ID: #1234 - Amount: $5 - Date: 2024-11-16</li>
+                    <li>Payment ID: #1235 - Amount: $10 - Date: 2024-11-15</li>
+                </ul>
+            </div>
+
+            <!-- Manage Account Section -->
+            <div id="manageAccount" class="hidden">
+                <h2>Manage Account</h2>
+                <p>Update your profile and account settings here:</p>
+                <form>
+                    <label>Name:</label>
+                    <input type="text" placeholder="Enter your name">
+                    <label>Email:</label>
+                    <input type="email" placeholder="Enter your email">
+                    <label>Password:</label>
+                    <input type="password" placeholder="Enter a new password">
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Logout Section -->
+            <div id="logout" class="hidden">
+                <h2>Logout</h2>
+                <p>Click below to log out of your account.</p>
+                <form method="POST" action="tollemployeelogin.php">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="tolldash.js"></script>
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById("barcode-scanner");
+        const resultDisplay = document.getElementById("scanned-result");
+        const stopButton = document.getElementById("stop-scan");
+
+        // Start the barcode scanner
+        function startScanner() {
+            Quagga.init({
+                inputStream: {
+                    type: "LiveStream",
+                    target: video, // Render camera feed in this element
+                    constraints: {
+                        width: 640,
+                        height: 480,
+                        facingMode: "environment" // Use back camera if available
+                    }
+                },
+                decoder: {
+                    readers: ["code_128_reader", "ean_reader"] // Support common barcode types
+                }
+            }, function (err) {
+                if (err) {
+                    console.error("Error initializing Quagga:", err);
+                    resultDisplay.textContent = "Error initializing camera.";
+                    return;
+                }
+                Quagga.start();
+                stopButton.style.display = "block";
+            });
+
+            // Process the barcode after detection
+            Quagga.onDetected(function (data) {
+                const barcode = data.codeResult.code;
+                resultDisplay.textContent = "Scanned Barcode: " + barcode;
+
+                // Optionally, send the barcode to the backend for processing
+                sendBarcodeToServer(barcode);
+
+                // Stop scanning after successful detection
+                Quagga.stop();
+                stopButton.style.display = "none";
+            });
+        }
+
+        // Stop the scanner
+        stopButton.addEventListener("click", function () {
+            Quagga.stop();
+            stopButton.style.display = "none";
+            resultDisplay.textContent = "Scanning stopped.";
+        });
+
+        // Send the scanned barcode to your backend
+        function sendBarcodeToServer(barcode) {
+            fetch("process_barcode.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ barcode: barcode }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Backend response:", data);
+                    resultDisplay.textContent += "\n" + data.message;
+                })
+                .catch(error => {
+                    console.error("Error sending barcode to server:", error);
+                    resultDisplay.textContent += "\nError sending to server.";
+                });
+        }
+
+        // Automatically start scanning when the page loads
+        startScanner();
+    });
+</script>

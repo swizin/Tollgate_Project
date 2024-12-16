@@ -1,0 +1,39 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e2f01c;
+    padding: 0;
+    margin: 0;
+}
+.container{
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align: center;
+    color: #333;
+}
+input[type="tel"], input[type="number"], input[type="submit"]{
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+input[type="submit"]{
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    background-color: #dfd114;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Owner Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function togglePassword() {
+            var passwordField = document.querySelector('input[name="Password"]');
+            var showPasswordCheckbox = document.querySelector('#showPassword');
+            passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+        }
+    </script>
+</head>
+<body>
+    <div class="SignUp">
+        <h1>Vehicle Owner Sign Up</h1>
+    
+        <form method="POST" action="vehsignup.php">
+    <label>Driving License</label>
+    <input type="text" name="DrivingLicense" required>
+    
+    <label>Car Number Plate</label>
+    <input type="text" name="CarNumberPlate" required>
+    
+    <label>First Name</label>
+    <input type="text" name="FirstName" required>
+    
+    <label>Last Name</label>
+    <input type="text" name="LastName" required>
+    
+    <label>Email</label>
+    <input type="email" name="Email" required>
+    
+    <label>Password</label>
+    <input type="password" name="Password" required>
+    
+    <input type="submit" value="Submit">
+        </form>
+
+        
+        <p>By clicking the Sign Up button, you agree to our<br>
+        <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>
+        
+        <p>Already have an account? <a href="vehicleownerlogin.php">Login Here</a></p>
+    </div>
+</body>
+</html>

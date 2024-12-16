@@ -1,0 +1,273 @@
+/* General styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e6ebed;
+}
+
+/* Navigation bar styles */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+    color: #e2e2e2;
+}
+
+/* Content area styles */
+.content {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    display: none; /* Initially, all sections are hidden */
+    margin-top: 20px;
+}
+
+section.active {
+    display: block; /* Show the active section */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        margin-bottom: 5px;
+    }
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #edf5fdbb;
+}
+
+/* Navigation bar styles */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: rgb(24, 83, 194);
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+    color: #e2e2e2;
+}
+
+/* Content area styles */
+.content {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    display: none; /* Initially, all sections are hidden */
+    margin-top: 20px;
+}
+
+section.active {
+    display: block; /* Show the active section */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        margin-bottom: 5px;
+    }
+}
+
+/* General form styling */
+form {
+    max-width: 400px; /* Limit the form's width */
+    margin: 20px auto; /* Center the form */
+    padding: 20px;
+    background-color: #ffffff; /* White background for contrast */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Label styling */
+form label {
+    display: block; /* Stack labels above input fields */
+    margin-bottom: 5px; /* Add space below labels */
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Input field styling */
+form input[type="text"],
+form input[type="submit"] {
+    width: 100%; /* Make input fields full-width */
+    padding: 10px; /* Add padding for better usability */
+    margin-bottom: 15px; /* Add space between inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 14px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Submit button styling */
+form input[type="submit"] {
+    background-color: #007bff; /* Primary button color */
+    color: #fff; /* White text color */
+    font-weight: bold;
+    cursor: pointer;
+    border: none; /* Remove border */
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Form header styling */
+form h1 {
+    text-align: center; /* Center-align header */
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    form {
+        width: 90%; /* Adjust width for smaller screens */
+        padding: 15px;
+    }
+}
+/* Style for the hints */
+.hint {
+    font-size: 12px;
+    color: #555;
+    margin: 5px 0 15px 0; /* Space between hint and field */
+    display: none; /* Initially hidden */
+}
+
+/* Make the hint visible when the input is focused */
+input:focus + .hint {
+    display: block;
+    color: #007bff; /* Highlight color */
+    font-weight: normal;
+}
+/* Dropdown Styling */
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Hint Styling */
+.hint {
+    font-size: 12px;
+    color: #555;
+    margin: 5px 0 15px 0;
+    display: none; /* Hidden by default */
+}
+
+input:focus + .hint,
+select:focus + .hint {
+    display: block; /* Show hint on focus */
+    color: #007bff;
+    font-weight: normal;
+}
+
+#makePayment {
+    display: none; /* Initially hidden */
+    background: url('images/pic10.jpg') no-repeat center center fixed; /* Add your image path */
+    background-size: cover; /* Make sure the image covers the entire section */
+    color: rgb(10, 9, 9); /* Ensure text is readable on the background */
+    padding: 20px; /* Add padding for content spacing */
+    border-radius: 10px; /* Rounded corners (optional) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+#makePayment {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/pic10.jpg') no-repeat center center fixed;
+}
+
+#addrfidtag {
+    display: none; /* Initially hidden */
+    background: url('images/pic11.jpg') no-repeat center center fixed; /* Add your image path */
+    background-size: cover; /* Make sure the image covers the entire section */
+    color: white; /* Ensure text is readable on the background */
+    padding: 20px; /* Add padding for content spacing */
+    border-radius: 10px; /* Rounded corners (optional) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
